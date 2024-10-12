@@ -15,6 +15,7 @@ loginForm.addEventListener('submit', function (event) {
         error += 'Password is required! ';
     }
     if (error) {
+        errorMsg.style.display = 'block';
         errorMsg.innerHTML = "Error: " + error;
     } else {
         localStorage.setItem('email', email);

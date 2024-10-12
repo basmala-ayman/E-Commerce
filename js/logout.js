@@ -17,7 +17,7 @@ function updateCartNo() {
     productsCart.forEach((item) => {
         total += item.quantity;
     })
-    cartIcon.innerHTML = total;
+    cartIcon.innerHTML = total || 0;
 }
 
 function logout() {

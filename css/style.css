@@ -1,0 +1,70 @@
+h2 {
+    text-align: center;
+    font-size: 38px;
+}
+
+.navbar .navbar-brand {
+    font-size: 28px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-item:last-child {
+    position: relative;
+    width: fit-content;
+}
+
+.navbar .nav-item .cart {
+    position: absolute;
+    top: -2px;
+    right: -4px;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+}
+
+@media (max-width:767px) {
+    .navbar .navbar-nav {
+        margin-right: 0 !important;
+    }
+
+    .navbar .nav-item {
+        text-align: center;
+        margin: auto;
+    }
+
+    .navbar .nav-item .cart {
+        top: -1px;
+        right: -12px;
+    }
+}
+
+.navbar .nav-item .active {
+    font-weight: 600;
+}
+
+.navbar #name {
+    font-weight: 500;
+    text-decoration: none;
+}
+
+@media (max-width:767px) {
+    .navbar #name {
+        margin-right: 0 !important;
+        margin-bottom: 12px;
+    }
+
+    .navbar .alink {
+        text-align: center;
+        display: block;
+    }
+}
+
+.navbar .alink:last-of-type:hover {
+    font-size: 16.5px;
+}
+

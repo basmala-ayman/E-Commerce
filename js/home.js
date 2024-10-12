@@ -17,12 +17,14 @@ class Product {
 
 let myProducts = [];
 myProducts.push(new Product('1', 'Bakery-1', './images/bakery-1.webp', 'Bakery', 35, 11))
-myProducts.push(new Product('2', 'Bakery-2', './images/bakery-2.png', 'Bakery', 35, 0))
-myProducts.push(new Product('3', 'Bakery-3', './images/bakery-3.png', 'Bakery', 35, 16))
-myProducts.push(new Product('4', 'Bakery-4', './images/bakery-4.png', 'Bakery', 35, 2))
+myProducts.push(new Product('2', 'Bakery-2', './images/bakery-2.png', 'Bakery', 40, 0))
+myProducts.push(new Product('3', 'Bakery-3', './images/bakery-3.png', 'Bakery', 105, 16))
+myProducts.push(new Product('4', 'Bakery-4', './images/bakery-4.png', 'Bakery', 30, 2))
 myProducts.push(new Product('5', 'Bakery-5', './images/bakery-5.png', 'Bakery', 35, 12))
-myProducts.push(new Product('6', 'Bakery-6', './images/bakery-6.png', 'Bakery', 35, 19))
-myProducts.push(new Product('6', 'Bakery-7', './images/bakery-7.png', 'Bakery', 35, 15))
+myProducts.push(new Product('6', 'Bakery-6', './images/bakery-6.png', 'Bakery', 45, 19))
+myProducts.push(new Product('7', 'Bakery-7', './images/bakery-7.png', 'Bakery', 35, 15))
+myProducts.push(new Product('8', 'Bakery-8', './images/bakery-8.png', 'Bakery', 35, 1))
+myProducts.push(new Product('9', 'Bakery-9', './images/bakery-9.png', 'Bakery', 50, 0))
 
 let productsCart = [];
 
@@ -104,28 +106,8 @@ content.addEventListener('click', function (e) {
         updateCartNo();
         addToLocal();
     }
-})
+});
 
-// function add(productID) {
-//     let product = myProducts.find((item) => item.id === productID);
-//     // if this product is added for the first one
-//     if (!productsCart.find((item) => item.id === product.id)) {
-//         product.amount--;
-//         product.quantity++;
-//         productsCart.push(product);
-//     } else { // if this product is already in the cart
-//         productsCart.forEach((item) => {
-//             if (item.id === productID) {
-//                 item.amount--;
-//                 item.quantity++;
-//                 product.amount = item.amount;
-//                 product.quantity = item.quantity;
-//             }
-//         })
-//     }
-//     updateCartNo();
-//     addToLocal();
-// }
 
 function addToLocal() {
     let items = JSON.stringify(productsCart);

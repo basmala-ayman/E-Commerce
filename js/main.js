@@ -1,3 +1,4 @@
+//check if user logging in
 if (localStorage.getItem('email')) {
     window.location.href = 'home.html';
 } else {

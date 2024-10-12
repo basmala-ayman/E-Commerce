@@ -1,10 +1,7 @@
 .container-xl .text {
-    /* margin: auto; */
     text-align: center;
     width: fit-content;
     padding: 30px;
-    /* background-color: #eee; */
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -12,11 +9,33 @@
     border-radius: 10px;
 }
 
-.container-xl .text h2{
-    font-size: 34px;
+@media (max-width:991px) {
+    .container-xl .text{
+        width: 55%;
+    }
 }
 .container-xl .text p {
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 24px;
     font-weight: 600;
+}
+
+@media (max-width:767px) {
+    .container-xl .text{
+        width: calc(100% - 30px);
+    }
+        .container-xl .text p{
+            font-size: 20px;
+        }
+}
+@media (max-width:399px) {
+    .container-xl .text{
+        padding: 18px;
+    }
+        .container-xl .text p{
+            font-size: 19px;
+        }
+}
+.container-xl .text button:hover{
+    font-size: 16.5px;
 }

@@ -35,8 +35,8 @@ function displayProducts() {
             <div class="card-body" id="${product.id}">
                 <h5 class="card-title">${product.name}</h5>
                 <p class="card-text">${product.description}</p>
-                <p class="card-text"><strong>Price per Item: </strong>${product.price}</p>
-                <p class="card-text"><strong>Total Price: </strong>${product.price * product.quantity}</p>
+                <p class="card-text"><strong>Price per Item: </strong>${product.price} LE</p>
+                <p class="card-text"><strong>Total Price: </strong>${product.price * product.quantity} LE</p>
                 <div class="edit">
                     <button class="btn remove-one">-</button>
                     <span>${product.quantity}</span>
@@ -45,6 +45,9 @@ function displayProducts() {
                 <button class="btn btn-primary remove-all">Remove Product</button>
             </div>
             `
+            if (product.amount === 0) {
+                card.children[1].children[4].children[2].disabled = true;
+            }
             content.appendChild(card);
         }
     }
@@ -78,7 +81,8 @@ content.addEventListener('click', function (e) {
                 item.amount++;
                 e.target.parentElement.children[1].innerHTML = item.quantity;
                 if (item.quantity === 0) {
-                    e.target.disabled = true;
+                    // e.target.disabled = true;
+                    displayProducts();
                 } else {
                     e.target.disabled = false;
                 }
