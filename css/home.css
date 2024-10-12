@@ -1,0 +1,74 @@
+.navbar .nav-item .cart {
+    position: absolute;
+    top: -2px;
+    right: -5px;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+}
+
+.navbar .nav-item .active{
+    font-weight: 600;
+}
+
+.navbar .link-primary{
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.container-xl .content {
+    padding-bottom: 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 20px;
+}
+
+.container-xl .content .card {
+    transition: 0.3s ease;
+}
+
+.container-xl .content .card .label {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    width: 40px;
+    padding: 10px 10px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    writing-mode: vertical-lr;
+    color: white;
+}
+
+.container-xl .content .card .label::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: 15px solid white;
+    border-style: solid;
+    border-color: transparent transparent white;
+    border-width: 20px;
+}
+
+.container-xl .content .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.container-xl .content .card img {
+    margin: auto;
+    padding: 20px;
+    width: 80% !important;
+}
+
+.container-xl .content .card .card-body {
+    text-align: center;
+}
+
+.container-xl .content .card .card-body button {
+    transition: 0.3s ease;
+}

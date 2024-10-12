@@ -1,0 +1,127 @@
+// check if user logging in
+if (!localStorage.getItem('email')) {
+    window.location.href = 'login.html';
+}
+
+// set username in navbar
+let userName = document.getElementById('name');
+userName.innerHTML = "Hello, " + localStorage.getItem('email').split('@')[0];
+
+let productsCart = [];
+if (localStorage.getItem('cart')) {
+    productsCart = JSON.parse(localStorage.getItem('cart'));
+}
+
+let cartIcon = document.getElementById('cart');
+updateCartNo();
+
+let content = document.getElementById('content');
+
+let totalPrice = document.getElementById('total');
+calcTotal();
+
+if (productsCart) {
+    displayProducts();
+}
+
+function displayProducts() {
+    content.innerHTML = '';
+    for (const product of productsCart) {
+        if (product.quantity !== 0) {
+            let card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+            <img src="${product.img}" class="card-img-top" alt="${product.name}">
+            <div class="card-body" id="${product.id}">
+                <h5 class="card-title">${product.name}</h5>
+                <p class="card-text">${product.description}</p>
+                <p class="card-text"><strong>Price per Item: </strong>${product.price}</p>
+                <p class="card-text"><strong>Total Price: </strong>${product.price * product.quantity}</p>
+                <div class="edit">
+                    <button class="btn remove-one">-</button>
+                    <span>${product.quantity}</span>
+                    <button class="btn add-one">+</button>
+                </div>
+                <button class="btn btn-primary remove-all">Remove Product</button>
+            </div>
+            `
+            content.appendChild(card);
+        }
+    }
+}
+
+content.addEventListener('click', function (e) {
+    // add one item
+    if (e.target.classList.contains('add-one')) {
+        e.target.parentElement.children[0].disabled = false;
+        let productID = e.target.parentElement.parentElement.id;
+        productsCart.forEach((item) => {
+            if (item.id === productID) {
+                item.quantity++;
+                item.amount--;
+                e.target.parentElement.children[1].innerHTML = item.quantity;
+                if (item.amount === 0) {
+                    e.target.disabled = true;
+                } else {
+                    e.target.disabled = false;
+                }
+            }
+        });
+    }
+    // remove one item
+    if (e.target.classList.contains('remove-one')) {
+        e.target.parentElement.children[2].disabled = false;
+        let productID = e.target.parentElement.parentElement.id;
+        productsCart.forEach((item) => {
+            if (item.id === productID) {
+                item.quantity--;
+                item.amount++;
+                e.target.parentElement.children[1].innerHTML = item.quantity;
+                if (item.quantity === 0) {
+                    e.target.disabled = true;
+                } else {
+                    e.target.disabled = false;
+                }
+            }
+        });
+    }
+    
+    updateCartNo();
+    addToLocal();
+    
+    if (e.target.classList.contains('remove-all')) {
+        let productID = e.target.parentElement.id;
+        productsCart.forEach((item) => {
+            if (item.id === productID) {
+                item.amount += item.quantity;
+                item.quantity = 0;
+            }
+        });
+        updateCartNo();
+        addToLocal();
+        displayProducts();
+    }
+    // update total price value
+    calcTotal();
+});
+
+function addToLocal() {
+    let items = JSON.stringify(productsCart);
+    localStorage.setItem('cart', items);
+}
+
+function updateCartNo() {
+    let total = 0;
+    productsCart.forEach((item) => {
+        total += item.quantity;
+    })
+    cartIcon.innerHTML = total;
+}
+
+function calcTotal() {
+    let total = 0;
+    productsCart.forEach((product) => {
+        total += product.quantity * product.price;
+    })
+    totalPrice.innerHTML = `<strong>Total Price: </strong>${total} LE`;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="E-Commerce login">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/all.css">
+    <!-- bootstrap File -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Log In</title>
+</head>
+
+<body>
+    <div class="container-xl">
+        <form id="loginForm">
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                <label for="email">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+                <label for="password">Password</label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Log In</button>
+            <div id="errorMsg" class="bg-danger"></div>
+        </form>
+    </div>
+
+
+    <script src="js/login.js"></script>
+    <!-- bootstrap js -->
+    <script src="./js/bootstrap.js"></script>
+</body>
+
+</html>

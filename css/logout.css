@@ -1,0 +1,22 @@
+.container-xl .text {
+    /* margin: auto; */
+    text-align: center;
+    width: fit-content;
+    padding: 30px;
+    /* background-color: #eee; */
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+
+.container-xl .text h2{
+    font-size: 34px;
+}
+.container-xl .text p {
+    font-size: 20px;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
