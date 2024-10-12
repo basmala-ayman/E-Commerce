@@ -1,11 +1,11 @@
 // check if user logging in
-if (!localStorage.getItem('email')) {
+if (!localStorage.getItem('user')) {
     window.location.href = 'login.html';
 }
 
 // set username in navbar
 let userName = document.getElementById('name');
-userName.innerHTML = "Hello, " + localStorage.getItem('email').split('@')[0];
+userName.innerHTML = "Hello, " + JSON.parse(localStorage.getItem('user')).email.split('@')[0];
 
 let productsCart = [];
 if (localStorage.getItem('cart')) {

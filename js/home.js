@@ -1,5 +1,5 @@
 // check if user logging in
-if (!localStorage.getItem('email')) {
+if (!localStorage.getItem('user')) {
     window.location.href = 'login.html';
 }
 
@@ -35,7 +35,6 @@ if (localStorage.getItem('cart')) {
             if (product.id === item.id) {
                 product.quantity = item.quantity;
                 product.amount = item.amount;
-                console.log('done');
             }
         }
     })
@@ -43,7 +42,7 @@ if (localStorage.getItem('cart')) {
 
 // set username in navbar
 let userName = document.getElementById('name');
-userName.innerHTML = "Hello, " + localStorage.getItem('email').split('@')[0];
+userName.innerHTML = "Hello, " + JSON.parse(localStorage.getItem('user')).email.split('@')[0];
 
 let cartIcon = document.getElementById('cart');
 updateCartNo();
@@ -61,15 +60,18 @@ for (const product of myProducts) {
         item.innerHTML = `<div class="label"></div>`
     }
     item.innerHTML += `
-        <img src="${product.img}" class="card-img-top" alt="${product.name}">
-        <div class="card-body">
-            <h5 class="card-title">${product.name}</h5>
-            <p class="card-text">${product.description}</p>
-            <p class="card-text"><strong>Price: </strong>${product.price} LE</p>
-            <button id="${product.id}" class="btn btn-primary">Add To Cart</button>
-        </div>
+    <img src="${product.img}" class="card-img-top" alt="${product.name}">
+    <div class="card-body">
+        <h5 class="card-title">${product.name}</h5>
+        <p class="card-text">${product.description}</p>
+        <p class="card-text"><strong>Price: </strong>${product.price} LE</p>
+        <button id="${product.id}" class="btn btn-primary">Add To Cart</button>
+    </div>
     `
     content.appendChild(item);
+    if (product.amount === 0) {
+        document.getElementById(product.id).disabled=true
+    }
 }
 
 content.addEventListener('click', function (e) {
@@ -107,7 +109,6 @@ content.addEventListener('click', function (e) {
         addToLocal();
     }
 });
-
 
 function addToLocal() {
     let items = JSON.stringify(productsCart);
