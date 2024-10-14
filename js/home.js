@@ -21,7 +21,7 @@ myProducts.push(new Product('2', 'Bakery-2', './images/bakery-2.png', 'Bakery', 
 myProducts.push(new Product('3', 'Bakery-3', './images/bakery-3.png', 'Bakery', 105, 16))
 myProducts.push(new Product('4', 'Bakery-4', './images/bakery-4.png', 'Bakery', 30, 2))
 myProducts.push(new Product('5', 'Bakery-5', './images/bakery-5.png', 'Bakery', 35, 12))
-myProducts.push(new Product('6', 'Bakery-6', './images/bakery-6.png', 'Bakery', 45, 19))
+myProducts.push(new Product('6', 'Bakery-6', './images/bakery-6.png', 'Bakery', 45, 11))
 myProducts.push(new Product('7', 'Bakery-7', './images/bakery-7.png', 'Bakery', 35, 15))
 myProducts.push(new Product('8', 'Bakery-8', './images/bakery-8.png', 'Bakery', 35, 1))
 myProducts.push(new Product('9', 'Bakery-9', './images/bakery-9.png', 'Bakery', 50, 0))
