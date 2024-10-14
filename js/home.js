@@ -26,6 +26,12 @@ myProducts.push(new Product('7', 'Bakery-7', './images/bakery-7.png', 'Bakery', 
 myProducts.push(new Product('8', 'Bakery-8', './images/bakery-8.png', 'Bakery', 35, 1))
 myProducts.push(new Product('9', 'Bakery-9', './images/bakery-9.png', 'Bakery', 50, 0))
 
+if (localStorage.getItem('allProducts')) {
+    myProducts = JSON.parse(localStorage.getItem('allProducts'));
+} else {
+    localStorage.setItem('allProducts', JSON.stringify(myProducts));
+}
+
 let productsCart = [];
 
 if (localStorage.getItem('cart')) {

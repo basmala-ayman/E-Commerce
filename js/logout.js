@@ -23,12 +23,23 @@ function updateCartNo() {
 function logout() {
     let allUsers = JSON.parse(localStorage.getItem('allUsers'));
     let currentUser = JSON.parse(localStorage.getItem('user'));
+    let allProducts = JSON.parse(localStorage.getItem('allProducts'));
+    productsCart = JSON.parse(localStorage.getItem('cart'));
+    allProducts.forEach((product) => {
+        for (const item of productsCart) {
+            if (product.id === item.id) {
+                product.quantity = item.quantity;
+                product.amount = item.amount;
+            }
+        }
+    })
     allUsers.forEach((user) => {
         if (user.email === currentUser.email) {
-            user.order = JSON.parse(localStorage.getItem('cart'));
+            user.order = productsCart;
         }
     })
     localStorage.setItem('allUsers', JSON.stringify(allUsers));
+    localStorage.setItem('allProducts', JSON.stringify(allProducts));
     localStorage.removeItem('user');
     localStorage.removeItem('cart');
     window.location.href = 'login.html';
