@@ -48,7 +48,7 @@ if (localStorage.getItem('cart')) {
 
 // set username in navbar
 let userName = document.getElementById('name');
-userName.innerHTML = "Hello, " + JSON.parse(localStorage.getItem('user')).fName;
+userName.innerHTML = "Hello, " + JSON.parse(localStorage.getItem('user')).firstName;
 
 let cartIcon = document.getElementById('cart');
 updateCartNo();
@@ -76,7 +76,7 @@ for (const product of myProducts) {
     `
     content.appendChild(item);
     if (product.amount === 0) {
-        document.getElementById(product.id).disabled=true
+        document.getElementById(product.id).disabled = true
     }
 }
 

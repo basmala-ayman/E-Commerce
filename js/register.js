@@ -1,7 +1,7 @@
 class User {
-    constructor(fName, lName, email, password, order) {
-        this.fName = fName;
-        this.lName = lName;
+    constructor(firstName, lastName, email, password, order) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.order = order;
@@ -17,8 +17,8 @@ if (localStorage.getItem('allUsers')) {
 
 registerForm.addEventListener('submit', function (event) {
     event.preventDefault();
-    let fName = document.getElementById('firstName').value
-    let lName = document.getElementById('lastName').value
+    let firstName = document.getElementById('firstName').value
+    let lastName = document.getElementById('lastName').value
     let email = document.getElementById('email').value
     let password = document.getElementById('password').value
     let rePassword = document.getElementById('rePassword').value
@@ -42,7 +42,7 @@ registerForm.addEventListener('submit', function (event) {
             errorMsg.style.display = 'block';
             errorMsg.innerHTML = `Error: This Email is already Exist. Please, <a href="login.html" class="text-white">Log In now</a>`;
         } else {
-            allUsers.push(new User(fName, lName, email, password));
+            allUsers.push(new User(firstName, lastName, email, password));
             localStorage.setItem('allUsers', JSON.stringify(allUsers));
             window.location.href = 'login.html';
         }
