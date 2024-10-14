@@ -48,7 +48,7 @@ if (localStorage.getItem('cart')) {
 
 // set username in navbar
 let userName = document.getElementById('name');
-userName.innerHTML = "Hello, " + JSON.parse(localStorage.getItem('user')).email.split('@')[0];
+userName.innerHTML = "Hello, " + JSON.parse(localStorage.getItem('user')).fName;
 
 let cartIcon = document.getElementById('cart');
 updateCartNo();

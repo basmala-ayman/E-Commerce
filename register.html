@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="E-Commerce login">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap File -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- css style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    <title>Log In</title>
+</head>
+
+<body>
+    <div class="container-xl">
+        <form id="registerForm" class="shadow needs-validation">
+            <h2 class="text-primary">Register</h2>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="firstName" placeholder="Your first name" required>
+                        <label for="firstName">First name</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="lastName" placeholder="Your last name" required>
+                        <label for="lastName">Last name</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                <label for="email">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" placeholder="Password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="rePassword" placeholder="Confirm your password" required>
+                <label for="rePassword">Confirm your password</label>
+            </div>
+            <div id="errorMsg" class="error bg-danger"></div>
+            <a href="login.html">Do you have already an account?</a>
+            <button type="submit" class="btn btn-primary mt-3 d-block ms-auto">Register</button>
+        </form>
+    </div>
+
+
+    <script src="js/register.js"></script>
+    <!-- bootstrap js -->
+    <script src="./js/bootstrap.js"></script>
+</body>
+
+</html>

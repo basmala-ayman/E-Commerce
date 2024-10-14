@@ -29,3 +29,9 @@
     font-weight: 500;
     display: none;
 }
+
+.container-xl form .error+a{
+    margin: 16px 0 0 auto;
+    display: block;
+    width: fit-content;
+}
