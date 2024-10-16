@@ -24,6 +24,7 @@ function logout() {
     let allUsers = JSON.parse(localStorage.getItem('allUsers'));
     let currentUser = JSON.parse(localStorage.getItem('user'));
     let allProducts = JSON.parse(localStorage.getItem('allProducts'));
+    // products that user choice
     productsCart = JSON.parse(localStorage.getItem('cart'));
     allProducts.forEach((product) => {
         for (const item of productsCart) {
@@ -33,6 +34,7 @@ function logout() {
             }
         }
     })
+    // save user's order
     allUsers.forEach((user) => {
         if (user.email === currentUser.email) {
             user.order = productsCart;

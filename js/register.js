@@ -11,8 +11,6 @@ class User {
 let allUsers = [];
 if (localStorage.getItem('allUsers')) {
     allUsers = JSON.parse(localStorage.getItem('allUsers'));
-} else {
-    localStorage.setItem('allUsers', JSON.stringify(allUsers));
 }
 
 registerForm.addEventListener('submit', function (event) {
@@ -26,11 +24,21 @@ registerForm.addEventListener('submit', function (event) {
     errorMsg.style.display = 'none';
     let error = "";
     let pattern = /\S+@\S+\.\S+/;
-    if (!pattern.test(email)) {
+    if (!firstName) {
+        error += `First Name is <strong>required</strong>`;
+    } else if (!lastName) {
+        error += `Last Name is <strong>required</strong>`;
+    } else if (!email) {
+        error += `Email is <strong>required</strong>`;
+    } else if (!pattern.test(email)) {
         error += `Invalid Email!!
         Please, try again.`;
+    } else if (!password) {
+        error += `Password is <strong>required</strong>`;
     } else if (password.length < 6) {
         error += 'Password must be greater than 6 characters! ';
+    } else if (!rePassword) {
+        error += `Confirmation your password is <strong>required</strong>`;
     } else if (password !== rePassword) {
         error += 'Passwords do not match! ';
     }
@@ -44,6 +52,7 @@ registerForm.addEventListener('submit', function (event) {
         } else {
             allUsers.push(new User(firstName, lastName, email, password));
             localStorage.setItem('allUsers', JSON.stringify(allUsers));
+            this.submit();
             window.location.href = 'login.html';
         }
     }

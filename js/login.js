@@ -14,12 +14,12 @@ loginForm.addEventListener('submit', function (event) {
     let error = "";
     let pattern = /\S+@\S+\.\S+/;
     if (!email) {
-        error += 'Email is required! ';
+        error += `Email is <strong>required</strong>! `;
     } else if (!pattern.test(email)) {
         error += `Invalid Email!!
         Please, try again.`;
     } else if (!password) {
-        error += 'Password is required! ';
+        error += 'Password is <strong>required</strong>! ';
     }
     if (error) {
         errorMsg.style.display = 'block';
