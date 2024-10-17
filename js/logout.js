@@ -27,11 +27,18 @@ function logout() {
     // products that user choice
     productsCart = JSON.parse(localStorage.getItem('cart'));
     allProducts.forEach((product) => {
-        for (const item of productsCart) {
-            if (product.id === item.id) {
-                product.quantity = item.quantity;
-                product.amount = item.amount;
+        let item = productsCart.find(p => product.id === p.id);
+        if (item) {
+            // update the global quantity of this product
+            let existProduct = product.activeQuantity.find(i => i.userEmail === currentUser.email);
+            if(existProduct){
+                existProduct.userQuantity = item.quantity;
+            } else {
+                product.activeQuantity.push({ userEmail: currentUser.email, userQuantity: item.quantity });
             }
+            // set the local quantity for each user to zero
+            product.quantity = 0;
+            product.amount = item.amount;
         }
     })
     // save user's order

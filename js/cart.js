@@ -8,6 +8,7 @@ let userName = document.getElementById('name');
 userName.innerHTML = "Hello, " + JSON.parse(localStorage.getItem('user')).firstName;
 
 let productsCart = [];
+
 if (localStorage.getItem('cart')) {
     productsCart = JSON.parse(localStorage.getItem('cart'));
 }
@@ -53,6 +54,7 @@ function displayProducts() {
     }
 }
 
+let currentUser = JSON.parse(localStorage.getItem('user'))
 content.addEventListener('click', function (e) {
     // add one item
     if (e.target.classList.contains('add-one')) {
@@ -61,8 +63,15 @@ content.addEventListener('click', function (e) {
         productsCart.forEach((item) => {
             if (item.id === productID) {
                 item.quantity++;
+                let existProduct = item.activeQuantity.find(i => i.userEmail === currentUser.email);
+                if (existProduct) {
+                    existProduct.userQuantity = item.quantity;
+                } else {
+                    item.activeQuantity.push({ userEmail: currentUser.email, userQuantity: item.quantity });
+                }
                 item.amount--;
                 e.target.parentElement.children[1].innerHTML = item.quantity;
+                // set add button disabled when the amount of product equals zero
                 if (item.amount === 0) {
                     e.target.disabled = true;
                 } else {
@@ -77,8 +86,11 @@ content.addEventListener('click', function (e) {
         let productID = e.target.parentElement.parentElement.id;
         productsCart.forEach((item, index) => {
             if (item.id === productID) {
-                i = index;
                 item.quantity--;
+                let existItem = item.activeQuantity.find(i => i.userEmail === currentUser.email);
+                if (existItem) {
+                    existItem.userQuantity = item.quantity;
+                }
                 item.amount++;
                 e.target.parentElement.children[1].innerHTML = item.quantity;
                 if (item.quantity === 0) {
@@ -96,13 +108,15 @@ content.addEventListener('click', function (e) {
 
     if (e.target.classList.contains('remove-all')) {
         let productID = e.target.parentElement.id;
-        // let i;
         productsCart.forEach((item, index) => {
             if (item.id === productID) {
                 item.amount += item.quantity;
                 item.quantity = 0;
+                let existItem = item.activeQuantity.find(i => i.userEmail === currentUser.email);
+                if (existItem) {
+                    existItem.userQuantity = item.quantity;
+                }
                 productsCart.splice(index, 1);
-                // i = index;
             }
         });
         updateCartNo();
