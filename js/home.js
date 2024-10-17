@@ -44,6 +44,7 @@ if (currentUser.order.length !== 0) {
         let item = myProducts.find(p => p.id === product.id);
         product.amount = item.amount;
     })
+    localStorage.setItem('user', JSON.stringify(currentUser));
     addCartToLocal();
 } else { // if user doesn't have any order before || if user order now
     if (localStorage.getItem('cart')) {

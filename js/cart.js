@@ -80,11 +80,12 @@ content.addEventListener('click', function (e) {
             }
         });
     }
+
     // remove one item
     if (e.target.classList.contains('remove-one')) {
         e.target.parentElement.children[2].disabled = false;
         let productID = e.target.parentElement.parentElement.id;
-        productsCart.forEach((item, index) => {
+        productsCart.forEach((item) => {
             if (item.id === productID) {
                 item.quantity--;
                 let existItem = item.activeQuantity.find(i => i.userEmail === currentUser.email);
@@ -94,7 +95,6 @@ content.addEventListener('click', function (e) {
                 item.amount++;
                 e.target.parentElement.children[1].innerHTML = item.quantity;
                 if (item.quantity === 0) {
-                    productsCart.splice(index, 1);
                     displayProducts();
                 } else {
                     e.target.disabled = false;
@@ -108,7 +108,7 @@ content.addEventListener('click', function (e) {
 
     if (e.target.classList.contains('remove-all')) {
         let productID = e.target.parentElement.id;
-        productsCart.forEach((item, index) => {
+        productsCart.forEach((item) => {
             if (item.id === productID) {
                 item.amount += item.quantity;
                 item.quantity = 0;
@@ -116,13 +116,13 @@ content.addEventListener('click', function (e) {
                 if (existItem) {
                     existItem.userQuantity = item.quantity;
                 }
-                productsCart.splice(index, 1);
             }
         });
         updateCartNo();
         addToLocal();
         displayProducts();
     }
+
     // update total price value
     calcTotal();
 });
